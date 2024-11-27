@@ -18,7 +18,7 @@ const router = createRouter({
       path: "/", // 기본 경로
       name: "Dashboard",
       component: () => import("../components/DashBaordView.vue"),
-      meta: { requiresAuth: false }, // 인증 필요
+      meta: { requiresAuth: true }, // 인증 필요
       beforeEnter: authGuard, // 경로별 가드 적용
     },
     {
@@ -30,7 +30,7 @@ const router = createRouter({
     path: "/article/",
     name: "ArticleDetail",
     component: () => import("../components/ArticleDetail.vue"),
-	meta: { requiresAuth: false }, // 인증 필요
+	meta: { requiresAuth: true }, // 인증 필요
     beforeEnter: authGuard, // 경로별 가드 적용
     props: true,
   },
