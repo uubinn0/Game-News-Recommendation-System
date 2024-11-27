@@ -31,6 +31,11 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'webvue',
+    'articles',
+    'users',
+    'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,10 +121,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+import os
+# STATIC URL 설정
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS 추가
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "dist"),
+]
+
+# 빌드된 Vue 파일들을 위한 템플릿 경로 추가
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'dist')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
